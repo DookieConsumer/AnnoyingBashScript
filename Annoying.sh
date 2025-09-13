@@ -18,12 +18,11 @@ mode="${modes_pool[$RANDOM % ${#modes_pool[@]}]}"
 scale_pool=(
   "1x1" "2x2" "3x3" "16x16" "32x18" "64x36"
   "80x25" "100x56" "160x90" "320x180" "640x360" "800x600"
-  "$mode" # sometimes “normal”
+  "$mode"
 )
 
 sf="${scale_pool[$RANDOM % ${#scale_pool[@]}]}"
 
-# Bonus: random panning and rotation to add extra grief
 rot_pool=("normal" "left" "right" "inverted")
 rot="${rot_pool[$RANDOM % ${#rot_pool[@]}]}"
 
@@ -33,7 +32,6 @@ fi
 
 xrandr --output "$OUT" --mode "$mode" --rotate "$rot" || true
 
-# Parse WxH
 fw="${sf%x*}"; fh="${sf#*x}"
 
 
